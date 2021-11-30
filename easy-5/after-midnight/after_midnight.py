@@ -1,27 +1,19 @@
-'''A module for working with time'''
+'''A module for formatting time representations'''
 
-MINUTES_IN_AN_HOUR = 60
-MINUTES_IN_A_DAY = 1440
+TOTAL_MINUTES_IN_DAY = 1440
 
-def after_midnight(timestring):
-    '''
-    A function for calculating minutes after midnight from an input
-    time string
-    '''
-    hrs, mins = [int(time_part) for time_part in timestring.split(':')]
-    if mins == MINUTES_IN_A_DAY:
-        return 0
+def format_num(num):
+    '''Conditionally prepend zeros to a string digit to ensure
+	   length two'''
+    num_char = str(num)
+    if len(num_char) < 2:
+        return f'0{num_char}'
 
-    return mins + (hrs * MINUTES_IN_AN_HOUR)
+    return num_char
 
+def time_of_day(minute_time):
+    '''Convert negative or positive minute input to 24 hr time'''
+    current_mins = minute_time % TOTAL_MINUTES_IN_DAY
+    hrs, mins = divmod(current_mins, 60)
 
-def before_midnight(timestring):
-    '''
-    A function for calculating minutes before midnight from an input
-    time string
-    '''
-    mins = after_midnight(timestring)
-    if mins == 0:
-        return 0
-
-    return MINUTES_IN_A_DAY - mins
+    return f'{format_num(hrs)}:{format_num(mins)}'

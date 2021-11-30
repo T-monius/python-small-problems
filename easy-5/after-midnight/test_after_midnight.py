@@ -1,36 +1,50 @@
+'''A module for testing after_midnight module'''
 import unittest
-from after_midnight import before_midnight, after_midnight
+from after_midnight import time_of_day
 
-class TestAfterAndBeforeMidnight(unittest.TestCase):
-    def test_zero_after_midnight(self):
-        timestring = '00:00'
-        mins = after_midnight(timestring)
-        self.assertEqual(mins, 0)
+class TestTimeOfDay(unittest.TestCase):
+    '''Test time_of_day funtion'''
+    def test_zero(self):
+        '''Test time_of_day function with input of zero'''
+        minute_time = 0
+        twenty_four_hr_time = time_of_day(minute_time)
+        self.assertEqual(twenty_four_hr_time, '00:00')
 
-    def test_zero_before_midnight(self):
-        timestring = '00:00'
-        mins = before_midnight(timestring)
-        self.assertEqual(mins, 0)
+    def test_negative_three(self):
+        '''Test time_of_day function with input of negative 3'''
+        minute_time = -3
+        twenty_four_hr_time = time_of_day(minute_time)
+        self.assertEqual(twenty_four_hr_time, '23:57')
 
-    def test_twelve_thirty_four_after(self):
-        timestring = '12:34'
-        mins = after_midnight(timestring)
-        self.assertEqual(mins, 754)
+    def test_thirty_five(self):
+        '''Test time_of_day function with input of 35'''
+        minute_time = 35
+        twenty_four_hr_time = time_of_day(minute_time)
+        self.assertEqual(twenty_four_hr_time, '00:35')
 
-    def test_twelve_thirty_four_before(self):
-        timestring = '12:34'
-        mins = before_midnight(timestring)
-        self.assertEqual(mins, 686)
+    def test_negative_fourteen_thiry_seven(self):
+        '''Test time_of_day function with input of -1437'''
+        minute_time = -1437
+        twenty_four_hr_time = time_of_day(minute_time)
+        self.assertEqual(twenty_four_hr_time, '00:03')
 
-    def test_twenty_four_after(self):
-        timestring = '24:00'
-        mins = after_midnight(timestring)
-        self.assertEqual(mins, 0)
+    def test_three_thousand(self):
+        '''Test time_of_day function with input of 3000'''
+        minute_time = 3000
+        twenty_four_hr_time = time_of_day(minute_time)
+        self.assertEqual(twenty_four_hr_time, '02:00')
 
-    def test_twenty_four_after(self):
-        timestring = '24:00'
-        mins = before_midnight(timestring)
-        self.assertEqual(mins, 0)
+    def test_eight_hundred(self):
+        '''Test time_of_day function with input of 800'''
+        minute_time = 800
+        twenty_four_hr_time = time_of_day(minute_time)
+        self.assertEqual(twenty_four_hr_time, '13:20')
+
+    def test_negative_fourty_two_thirty_one(self):
+        '''Test time_of_day function with input of zero'''
+        minute_time = -4231
+        twenty_four_hr_time = time_of_day(minute_time)
+        self.assertEqual(twenty_four_hr_time, '01:29')
 
 
 if __name__ == '__main__':
