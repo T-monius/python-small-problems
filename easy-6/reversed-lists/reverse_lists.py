@@ -15,3 +15,17 @@ def reverse_in_place(lst):
         idx2 -= 1
 
     return lst
+
+
+def backwards(lst):
+    '''Return a new list which is the reverse element order of input
+       list'''
+    lst_backwards = []
+    idx = len(lst) - 1
+
+    while idx >= 0:
+        current_element = lst[idx]
+        lst_backwards.append(current_element)
+        idx -= 1
+
+    return lst_backwards

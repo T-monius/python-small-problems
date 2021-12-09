@@ -57,3 +57,41 @@ lst == [] # true
 	- Increment first idx
 	- Decrement second idx
 3. Return List
+
+## Problem 2
+
+Write a function that takes a List, and returns a new List with the elements of the original list in reverse order. Do not modify the original list.
+
+You may not use built in functions, nor may you use the function you wrote in the previous exercise.
+
+### Understanding
+
+Can append to a new list
+
+### Examples / Test Cases
+
+```python
+backwards([1,2,3,4]) == [4,3,2,1]          # => true
+backwards(%w(a b e d c)) == %w(c d e b a)  # => true
+backwards(['abc']) == ['abc']              # => true
+backwards([]) == []                        # => true
+
+list = [1, 3, 2]                      # => [1, 3, 2]
+new_list = backwards(list)              # => [2, 3, 1]
+list.object_id != new_list.object_id  # => true
+list == [1, 3, 2]                     # => true
+new_list == [2, 3, 1]                 # => true
+```
+
+## Data Structures
+
+- List
+
+## Algorithm
+Functional Abstractions
+- Iteration
+1. Declare a new empty list for return
+2. Declare an `idx` for iteration set to last idx
+3. Iterate while `idx` is greater than -1 (or >= 0)
+	- Push element at iteration to new list
+4. Return new list
