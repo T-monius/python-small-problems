@@ -58,3 +58,39 @@ Functional Abstractions
 2. Access current char from length of return string
 3. Conditionally uppercase current char
 4. Recursively call function
+
+## Problem 2
+
+Modify the function from the previous exercise so it ignores non-alphabetic characters when determining whether it should uppercase or lowercase each letter. The non-alphabetic characters should still be included in the return value; they just don't count when toggling the desired case.
+
+### Understanding
+
+Input
+- String
+	- Arbitrary characters
+	- Include alphas
+Output
+- String where every other alpha character is capitalized
+
+Capitalized every odd count alpha.
+- The first is capitalized
+
+## Examples / Test Cases
+
+```python
+alpha_staggered_case('I Love Launch School!') == 'I lOvE lAuNcH sChOoL!'
+alpha_staggered_case('ALL CAPS') == 'AlL cApS'
+alpha_staggered_case('ignore 77 the 444 numbers') == 'IgNoRe 77 ThE 444 nUmBeRs'
+
+'''
+'I Love Launch School!'
+   ^
+
+idx = 3
+char = 'L'
+alpha_count = 2
+str = 'I l'
+'''
+```
+
+
